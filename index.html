@@ -158,6 +158,16 @@ dialog.guia::backdrop{background:rgba(22,19,29,.45)}
 .guia ol{margin:0;padding-left:22px;display:grid;gap:10px;color:var(--ink2)}
 .guia b{color:var(--ink)}
 .guia .pie{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;font-size:14px;color:var(--muted)}
+
+/* compra */
+.guia form{display:flex;flex-direction:column;gap:14px}
+.guia label{display:flex;flex-direction:column;gap:6px;font-size:14px;color:var(--ink2)}
+.guia input[type=email]{height:46px;border:1px solid var(--line);border-radius:8px;padding:0 12px;font:16px var(--sans);background:var(--bg);color:var(--ink)}
+.guia input[type=email]:focus{outline:2px solid var(--acc);outline-offset:1px}
+.guia .resumen{display:flex;justify-content:space-between;align-items:baseline;gap:12px;border:1px solid var(--line);border-radius:10px;padding:14px 16px}
+.guia .resumen b{font-family:var(--serif);font-weight:500;font-size:26px;font-variant-numeric:tabular-nums}
+.guia .error{color:#B3402E;font-size:14px}
+.guia .acciones{display:flex;justify-content:flex-end;gap:10px;flex-wrap:wrap}
 @media (max-width:900px){
   .top nav{display:none}
   .top .btn{margin-left:auto}
@@ -263,17 +273,17 @@ dialog.guia::backdrop{background:rgba(22,19,29,.45)}
         <div class="nom">Anual</div>
         <div class="precio"><b>$16.000</b><span>por año</span></div>
         <ul><li>Todas las funciones</li><li>Actualizaciones mientras esté vigente</li><li>El programa te avisa antes de que venza</li></ul>
-        <a class="btn" href="https://wa.me/56948778640?text=Hola%2C%20quiero%20comprar%20la%20licencia%20anual%20de%20Fonoregistro." target="_blank" rel="noopener">Comprar la anual</a>
+        <a class="btn" href="https://wa.me/56948778640?text=Hola%2C%20quiero%20comprar%20la%20licencia%20anual%20de%20Fonoregistro." target="_blank" rel="noopener" data-comprar="anual">Comprar la anual</a>
       </div>
       <div class="plan dest">
         <div class="nom">Permanente <span class="tag" id="perm-tag">Oferta de lanzamiento</span></div>
         <div class="precio" id="perm-precio"><b>$15.000</b><s>$26.000</s><span>pago único</span></div>
         <p class="hasta" id="perm-hasta">Precio de lanzamiento hasta el 31 de octubre de 2026</p>
         <ul><li>Todas las funciones</li><li>No vence nunca</li><li>Actualizaciones incluidas</li></ul>
-        <a class="btn pri" href="https://wa.me/56948778640?text=Hola%2C%20quiero%20comprar%20la%20licencia%20permanente%20de%20Fonoregistro." target="_blank" rel="noopener">Comprar la permanente</a>
+        <a class="btn pri" href="https://wa.me/56948778640?text=Hola%2C%20quiero%20comprar%20la%20licencia%20permanente%20de%20Fonoregistro." target="_blank" rel="noopener" data-comprar="permanente">Comprar la permanente</a>
       </div>
     </div>
-    <p class="letra">Precios en pesos chilenos. Por ahora la compra se hace por WhatsApp: te enviamos el link de pago y, al confirmarse, tu licencia llega por correo.</p>
+    <p class="letra" id="letra-compra">Precios en pesos chilenos. Por ahora la compra se hace por WhatsApp: te enviamos el link de pago y, al confirmarse, tu licencia llega por correo.</p>
   </section>
 
   <section aria-labelledby="empezar-h">
@@ -310,6 +320,19 @@ dialog.guia::backdrop{background:rgba(22,19,29,.45)}
   <footer><svg class="logo" viewBox="0 0 349.9 72" role="img" aria-label="Fonoregistro"><g transform="scale(0.75)"><circle cx="48" cy="48" r="42" fill="var(--acc)"/><g stroke-width="6" stroke-linecap="round" stroke-linejoin="round" fill="none"><path d="M18 50H26L32 38L40 62L46 44L50 50" stroke="var(--logo-onda)"/><path d="M50 50L58 60L76 34" stroke="var(--logo-visto)"/></g></g><path d="M101.46 27.73H96.98V47.88H91.92V27.73H89.06V23.64H91.92V21.92Q91.92 17.74 94.14 15.83Q96.36 13.91 101.11 13.91V18.09Q98.82 18.09 97.9 18.95Q96.98 19.81 96.98 21.92V23.64H101.46ZM103.88 35.74Q103.88 32.04 105.51 29.18Q107.14 26.32 109.95 24.78Q112.77 23.24 116.24 23.24Q119.72 23.24 122.54 24.78Q125.35 26.32 126.98 29.18Q128.61 32.04 128.61 35.74Q128.61 39.43 126.94 42.29Q125.26 45.15 122.38 46.71Q119.5 48.28 116.02 48.28Q112.59 48.28 109.82 46.71Q107.05 45.15 105.46 42.31Q103.88 39.48 103.88 35.74ZM123.46 35.74Q123.46 33.1 122.45 31.27Q121.44 29.44 119.76 28.52Q118.09 27.6 116.16 27.6Q114.22 27.6 112.57 28.52Q110.92 29.44 109.95 31.27Q108.98 33.1 108.98 35.74Q108.98 39.65 110.99 41.79Q112.99 43.92 116.02 43.92Q117.96 43.92 119.65 43Q121.35 42.07 122.4 40.22Q123.46 38.38 123.46 35.74ZM155.36 33.58V47.88H150.38V34.33Q150.38 31.07 148.76 29.33Q147.13 27.6 144.31 27.6Q141.5 27.6 139.85 29.33Q138.2 31.07 138.2 34.33V47.88H133.18V23.64H138.2V26.41Q139.43 24.91 141.34 24.08Q143.26 23.24 145.41 23.24Q148.27 23.24 150.54 24.43Q152.8 25.62 154.08 27.95Q155.36 30.28 155.36 33.58ZM159.71 35.74Q159.71 32.04 161.34 29.18Q162.96 26.32 165.78 24.78Q168.6 23.24 172.07 23.24Q175.55 23.24 178.36 24.78Q181.18 26.32 182.81 29.18Q184.44 32.04 184.44 35.74Q184.44 39.43 182.76 42.29Q181.09 45.15 178.21 46.71Q175.33 48.28 171.85 48.28Q168.42 48.28 165.65 46.71Q162.88 45.15 161.29 42.31Q159.71 39.48 159.71 35.74ZM179.29 35.74Q179.29 33.1 178.28 31.27Q177.26 29.44 175.59 28.52Q173.92 27.6 171.98 27.6Q170.05 27.6 168.4 28.52Q166.75 29.44 165.78 31.27Q164.81 33.1 164.81 35.74Q164.81 39.65 166.81 41.79Q168.82 43.92 171.85 43.92Q173.79 43.92 175.48 43Q177.18 42.07 178.23 40.22Q179.29 38.38 179.29 35.74Z" fill="var(--logo-a)"/><path d="M200.49 23.33V27.46H199.43Q192.7 27.46 192.7 34.77V47.88H188.7V23.77H192.7V27.68Q193.76 25.62 195.71 24.47Q197.67 23.33 200.49 23.33ZM226.58 37.32H207.3Q207.52 40.88 209.75 42.89Q211.97 44.89 215.14 44.89Q217.73 44.89 219.47 43.68Q221.21 42.47 221.91 40.44H226.22Q225.26 43.92 222.35 46.1Q219.45 48.28 215.14 48.28Q211.7 48.28 209 46.74Q206.29 45.2 204.75 42.36Q203.21 39.52 203.21 35.78Q203.21 32.04 204.71 29.22Q206.2 26.41 208.91 24.89Q211.62 23.37 215.14 23.37Q218.57 23.37 221.21 24.87Q223.85 26.36 225.28 28.98Q226.71 31.6 226.71 34.9Q226.71 36.04 226.58 37.32ZM214.96 26.76Q211.92 26.76 209.79 28.7Q207.66 30.63 207.35 34.06H222.57Q222.57 31.78 221.56 30.13Q220.55 28.48 218.81 27.62Q217.07 26.76 214.96 26.76ZM250.51 28.17V23.77H254.56V48.41Q254.56 51.71 253.15 54.28Q251.74 56.86 249.12 58.31Q246.5 59.76 243.03 59.76Q238.28 59.76 235.11 57.52Q231.94 55.27 231.37 51.4H235.33Q235.99 53.6 238.06 54.94Q240.12 56.28 243.03 56.28Q246.33 56.28 248.42 54.22Q250.51 52.15 250.51 48.41V43.35Q249.32 45.46 246.99 46.87Q244.66 48.28 241.53 48.28Q238.32 48.28 235.7 46.69Q233.08 45.11 231.59 42.25Q230.09 39.39 230.09 35.74Q230.09 32.04 231.59 29.25Q233.08 26.45 235.7 24.91Q238.32 23.37 241.53 23.37Q244.66 23.37 247.01 24.74Q249.36 26.1 250.51 28.17ZM242.32 26.85Q240.08 26.85 238.23 27.9Q236.38 28.96 235.28 30.98Q234.18 33.01 234.18 35.74Q234.18 38.51 235.28 40.55Q236.38 42.6 238.23 43.68Q240.08 44.76 242.32 44.76Q244.57 44.76 246.44 43.68Q248.31 42.6 249.41 40.55Q250.51 38.51 250.51 35.78Q250.51 33.05 249.41 31.03Q248.31 29 246.44 27.93Q244.57 26.85 242.32 26.85ZM260.27 17.12Q260.27 15.98 261.06 15.19Q261.86 14.4 263 14.4Q264.1 14.4 264.87 15.19Q265.64 15.98 265.64 17.12Q265.64 18.27 264.87 19.06Q264.1 19.85 263 19.85Q261.86 19.85 261.06 19.06Q260.27 18.27 260.27 17.12ZM264.94 23.77V47.88H260.93V23.77ZM270.04 40.8H274.17Q274.35 42.6 275.87 43.74Q277.38 44.89 279.85 44.89Q282.14 44.89 283.46 43.88Q284.78 42.86 284.78 41.32Q284.78 39.74 283.37 38.97Q281.96 38.2 279.01 37.45Q276.33 36.75 274.63 36.02Q272.94 35.3 271.73 33.87Q270.52 32.44 270.52 30.1Q270.52 28.26 271.62 26.72Q272.72 25.18 274.74 24.27Q276.77 23.37 279.36 23.37Q283.37 23.37 285.83 25.4Q288.3 27.42 288.47 30.94H284.47Q284.34 29.05 282.95 27.9Q281.56 26.76 279.23 26.76Q277.08 26.76 275.8 27.68Q274.52 28.61 274.52 30.1Q274.52 31.29 275.29 32.06Q276.06 32.83 277.23 33.29Q278.4 33.76 280.46 34.33Q283.06 35.03 284.69 35.71Q286.32 36.4 287.48 37.76Q288.65 39.12 288.69 41.32Q288.69 43.3 287.59 44.89Q286.49 46.47 284.49 47.37Q282.49 48.28 279.89 48.28Q277.12 48.28 274.92 47.33Q272.72 46.38 271.44 44.69Q270.17 43 270.04 40.8ZM298.81 27.07V41.28Q298.81 43.04 299.56 43.77Q300.3 44.49 302.15 44.49H305.1V47.88H301.49Q298.15 47.88 296.48 46.34Q294.8 44.8 294.8 41.28V27.07H291.68V23.77H294.8V17.7H298.81V23.77H305.1V27.07ZM321.33 23.33V27.46H320.28Q313.54 27.46 313.54 34.77V47.88H309.54V23.77H313.54V27.68Q314.6 25.62 316.56 24.47Q318.52 23.33 321.33 23.33ZM324.06 35.78Q324.06 32.08 325.66 29.25Q327.27 26.41 330.04 24.89Q332.81 23.37 336.24 23.37Q339.68 23.37 342.45 24.89Q345.22 26.41 346.83 29.22Q348.43 32.04 348.43 35.78Q348.43 39.52 346.78 42.36Q345.13 45.2 342.32 46.74Q339.5 48.28 336.07 48.28Q332.68 48.28 329.93 46.74Q327.18 45.2 325.62 42.36Q324.06 39.52 324.06 35.78ZM344.34 35.78Q344.34 32.88 343.2 30.85Q342.05 28.83 340.2 27.84Q338.36 26.85 336.2 26.85Q334 26.85 332.17 27.84Q330.35 28.83 329.25 30.85Q328.15 32.88 328.15 35.78Q328.15 38.73 329.23 40.75Q330.3 42.78 332.11 43.77Q333.91 44.76 336.07 44.76Q338.22 44.76 340.12 43.74Q342.01 42.73 343.17 40.71Q344.34 38.68 344.34 35.78Z" fill="var(--acc)"/></svg><span>© 2026 Fonoregistro · Programa para fonoaudiología</span></footer>
 </main>
 
+<dialog class="guia" id="compra" aria-labelledby="compra-h"><div class="in">
+  <h2 id="compra-h">Comprar Fonoregistro</h2>
+  <form id="compra-form" novalidate>
+    <div class="resumen"><span id="compra-plan">Licencia permanente</span><b id="compra-precio">$15.000</b></div>
+    <label for="compra-correo">Tu correo
+      <input type="email" id="compra-correo" name="correo" required autocomplete="email" placeholder="nombre@correo.cl">
+    </label>
+    <p style="font-size:14px;color:var(--muted)">La licencia queda a nombre de este correo y te llega ahí. Usa el mismo correo al activarla en el programa.</p>
+    <p class="error" id="compra-error" role="alert" hidden></p>
+    <div class="acciones"><button class="btn" type="button" id="compra-cerrar">Cancelar</button><button class="btn pri" type="submit" id="compra-ir">Pagar con Mercado Pago</button></div>
+  </form>
+</div></dialog>
+
 <dialog class="guia" id="guia" aria-labelledby="guia-h"><div class="in">
   <h2 id="guia-h">Tu descarga comenzó</h2>
   <ol>
@@ -336,6 +359,42 @@ dialog.guia::backdrop{background:rgba(22,19,29,.45)}
     a.addEventListener('click',function(){if(g&&g.showModal&&!g.open)setTimeout(function(){g.showModal()},300)});
   });
   var ok=document.getElementById('guia-ok');if(ok)ok.addEventListener('click',function(){g.close()});
+})();
+
+/* Compra con Mercado Pago. SERVIDOR es la dirección del servidor de pagos (servidor/LEEME.md); vacía = se compra por WhatsApp */
+var SERVIDOR = "https://fonoregistro-pagos.fonoregistro.workers.dev";
+/* Mientras PAGOS_EN_LINEA sea false, los visitantes compran por WhatsApp y el pago con Mercado Pago
+   solo se activa abriendo la página con ?prueba (para probar con las credenciales de prueba). */
+var PAGOS_EN_LINEA = false;
+if(!PAGOS_EN_LINEA && !/[?&]prueba/.test(location.search)) SERVIDOR = "";
+(function(){
+  if(!SERVIDOR)return;
+  var d=document.getElementById('compra'),f=document.getElementById('compra-form'),err=document.getElementById('compra-error'),ir=document.getElementById('compra-ir'),plan='permanente';
+  var oferta=Date.now()<Date.parse('2026-11-01T00:00:00-03:00');
+  var precios={anual:'$16.000 por año',permanente:oferta?'$15.000':'$26.000'};
+  var nombres={anual:'Licencia anual',permanente:'Licencia permanente'};
+  document.getElementById('letra-compra').textContent='Precios en pesos chilenos. Pagas con Mercado Pago (tarjeta de crédito, débito o saldo) y tu licencia aparece en pantalla y te llega por correo.';
+  document.querySelectorAll('[data-comprar]').forEach(function(a){
+    a.removeAttribute('target');
+    a.addEventListener('click',function(e){
+      e.preventDefault();plan=a.getAttribute('data-comprar');
+      document.getElementById('compra-plan').textContent=nombres[plan];
+      document.getElementById('compra-precio').textContent=precios[plan];
+      err.hidden=true;d.showModal();document.getElementById('compra-correo').focus();
+    });
+  });
+  document.getElementById('compra-cerrar').addEventListener('click',function(){d.close()});
+  document.getElementById('compra-correo').addEventListener('input',function(){err.hidden=true});
+  f.addEventListener('submit',function(e){
+    e.preventDefault();
+    var correo=document.getElementById('compra-correo').value.trim();
+    if(!/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(correo)){err.textContent='Escribe un correo válido: ahí te enviaremos la licencia.';err.hidden=false;return}
+    ir.disabled=true;ir.textContent='Abriendo Mercado Pago…';err.hidden=true;
+    fetch(SERVIDOR+'/pedido',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({plan:plan,correo:correo})})
+      .then(function(r){return r.json().then(function(j){if(!r.ok)throw new Error(j.error||'');return j})})
+      .then(function(j){location.href=j.url})
+      .catch(function(x){ir.disabled=false;ir.textContent='Pagar con Mercado Pago';err.textContent=(x&&x.message)||'No pudimos abrir el pago. Revisa tu conexión e inténtalo de nuevo.';err.hidden=false});
+  });
 })();
 </script>
 </body>
